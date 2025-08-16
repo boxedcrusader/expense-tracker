@@ -17,7 +17,7 @@ const login = async (req, res) => {
                 // Creating the JWT token
                 const accessToken = jwt.sign(
                     { email: user.email, id: user.user_id }, // Payload
-                    process.env.SECRET_ACCESS_TOKEN, // Secret key from environment variables
+                    process.env.SECRET_ACCESS_TOKEN || 'temporary_secret_for_testing_only', // Secret key from environment variables
                 );
 
                 return res.json({ accessToken });

@@ -7,7 +7,7 @@ import { deleteExpense, editExpense, getExpenses, setExpenses } from "../control
 const expense = express.Router();
 expense.use(express.json());
 
-expense.get("/expenses/:id", authenticateToken, getExpenses);
+expense.get("/expenses", authenticateToken, getExpenses);
 expense.post("/add", authenticateToken, setExpenses);
 expense.delete("/delete/:id", authenticateToken, deleteExpense);
 expense.patch("/edit/:id", authenticateToken, editExpense);

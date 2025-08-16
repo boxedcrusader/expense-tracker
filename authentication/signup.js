@@ -7,7 +7,7 @@ const signup = async (req, res) => {
         const passwordHash = await argon2.hash(password);
         
         const result = await pool.query("INSERT INTO users (email, user_password) VALUES ($1, $2)", [email, passwordHash]);
-
+        
         const newUser = result.rows[0];
         res.send("Account created: " + newUser);
     } catch (err) {
