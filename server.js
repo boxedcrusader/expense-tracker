@@ -12,7 +12,7 @@ const app = express();
 app.use(cors({ origin: "http://127.0.0.1:5500", credentials: true }));
 
 app.use(express.json());
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
