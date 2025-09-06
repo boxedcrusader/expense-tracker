@@ -9,7 +9,15 @@ import { requireAuth } from "./middleware/authenticateToken.js";
 dotenv.config();
 const app = express();
 
-app.use(cors({ origin: "http://127.0.0.1:5500", credentials: true }));
+app.use(
+  cors({
+    origin: [
+      "http://127.0.0.1:5500",
+      "https://expense-tracker-production-f1d6.up.railway.app",
+    ],
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 const port = process.env.PORT || 8080;
