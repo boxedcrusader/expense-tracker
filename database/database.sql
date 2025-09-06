@@ -14,7 +14,7 @@ CREATE TABLE categories (
 
 CREATE TABLE expenses (
     id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES users(user_id),
+    user_id UUID REFERENCES auth.users(id),
     category_id INTEGER REFERENCES categories(categorie_id),
     amount DECIMAL(10, 2) NOT NULL,
     expense_date DATE NOT NULL

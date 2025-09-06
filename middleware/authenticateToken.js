@@ -1,18 +1,34 @@
-import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
+export const requireAuth = async (req, res, next) => {
+    try {
+        const authHeader = req.headers.authorization;
 
-dotenv.config();
+        if(!authHeader) {
+            return res.status(401).json({error: "No authorization header"});
+        }
 
-export const authenticateToken = (req, res, next) => {
-    const authHeader = req.headers["authorization"];
-    const token = authHeader && authHeader.split(' ')[1];
+        const token = authHeader.replace("Bearer ", "");
 
-    if (token == null) return res.status(401).send("User has no access to perform this action");
+        if (!token) {
+            return res.status(401).json({error: "No token provided."})
+        }
 
-    jwt.verify(token, process.env.SECRET_ACCESS_TOKEN, (err, user) => {
-        if (err) return res.status(403).send("Token no longer valid");
+        const {data, error } = await req.supabase.auth.getUser(token);
+
+        if (error) {
+            console.log("Auth error:", error)
+            return res.status(401).json({error: "Invalid token passed."})
+        }
+
+        const user = data?.user;
+        if (!user) {
+            return res.status(401).json({error: "User not found"})
+        }
 
         req.user = user;
         next();
-    });
-};
+
+    } catch (err) {
+        res.status(500).json({error: "Authentication failed"});
+        console.log("Middleware error:", err);
+    }
+}

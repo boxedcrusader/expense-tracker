@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      main {
+        flex: 1; /* pushes footer to bottom */
+      }
+    </style>
+  </head>
+  <body class="bg-light">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="#">💰 Expense Tracker</a>
+        <div>
+          <!-- FIXED: modal triggers -->
+          <button
+            class="btn btn-outline-light me-2"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#loginModal"
+          >
+            Log In
+          </button>
+          <button
+            class="btn btn-outline-warning"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#signupModal"
+          >
+            Sign Up
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero / Welcome Section -->
+    <main class="container py-5">
+      <div
+        class="p-5 mb-4 bg-white rounded-3 shadow-sm text-center border border-2"
+      >
+        <h1 class="fw-bold">Welcome to Expense Tracker</h1>
+        <p class="lead mt-3">
+          Track your expenses, manage your budget, and stay in control of your
+          finances.
+        </p>
+        <div class="mt-4">
+          <button
+            class="btn btn-dark btn-lg me-2"
+            data-bs-toggle="modal"
+            data-bs-target="#loginModal"
+          >
+            Get Started
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light text-center py-3 mt-auto">
+      <small>&copy; 2025 Expense Tracker. All rights reserved.</small>
+    </footer>
+
+    <!-- Login Modal -->
+    <div
+      class="modal fade"
+      id="loginModal"
+      tabindex="-1"
+      aria-labelledby="loginModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-dark text-light">
+            <h5 class="modal-title" id="loginModalLabel">Log In</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="loginEmail" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="loginEmail"
+                  placeholder="Enter your email"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="loginPassword" class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="loginPassword"
+                  placeholder="Enter your password"
+                />
+              </div>
+              <button type="submit" class="btn btn-dark w-100">Log In</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div
+      class="modal fade"
+      id="signupModal"
+      tabindex="-1"
+      aria-labelledby="signupModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-warning">
+            <h5 class="modal-title" id="signupModalLabel">Sign Up</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="signupEmail" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="signupEmail"
+                  placeholder="Enter your email"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="signupPassword" class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="signupPassword"
+                  placeholder="Create a password"
+                />
+              </div>
+              <button type="submit" class="btn btn-warning w-100">
+                Sign Up
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
