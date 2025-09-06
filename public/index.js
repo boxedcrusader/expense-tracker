@@ -1,4 +1,4 @@
-const API_BASE = "https://expense-tracker-production-f1d6.up.railway.app";
+const API_BASE = "http://localhost:3000";
 let token = localStorage.getItem("token") || null;
 
 document.getElementById("signupModal").addEventListener("submit", async (e) => {
